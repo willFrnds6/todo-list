@@ -9,24 +9,7 @@ import { todoItem } from './todo-item';
 export class AppComponent {
   title = 'todo-list';
   
-  public todoArray : Array<todoItem> = [
-    {
-      title : 'items 1',
-      checked : true
-    },
-    {
-      title : 'items 2',
-      checked : false
-    },
-    {
-      title : 'items 3',
-      checked : true
-    },
-    {
-      title : 'items 4',
-      checked : false
-    },
-  ];
+  public todoArray : Array<todoItem> = [];
 
 
   //void = aucun return
@@ -52,5 +35,20 @@ export class AppComponent {
     if(index > -1 && index < this.todoArray.length){
       this.todoArray.splice(index, 1); // .splice() supprimer element d'un tableau
     }
+  }
+
+  public clearCompleted() : void {
+    /*
+      for(let i = 0; i < this.todoArray.length; i++){
+        if(this.todoArray.checked === true){
+          this.todoArray.splice(i, 1);
+        }
+      } //ERREUR suprime 1/2 SOLUTION, lire todoArray a l'envers !
+    */
+    for(let i = this.todoArray.length -1; i >= 0; i--){ //lecture à l'envers du tab
+      if(this.todoArray[i].checked === true){
+        this.todoArray.splice(i, 1);
+      }
+    } 
   }
 }

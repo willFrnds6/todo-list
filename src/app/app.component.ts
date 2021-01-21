@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { todoItem } from './todo-item';
 
 @Component({
   selector: 'app-root',
@@ -8,20 +9,48 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'todo-list';
   
-  public todoArray : Array<string> = [
-    'items 1',
-    'items 2',
-    'items 3',
-    'items 4'
+  public todoArray : Array<todoItem> = [
+    {
+      title : 'items 1',
+      checked : true
+    },
+    {
+      title : 'items 2',
+      checked : false
+    },
+    {
+      title : 'items 3',
+      checked : true
+    },
+    {
+      title : 'items 4',
+      checked : false
+    },
   ];
 
-  //void = bloc le return
-  public addItem($event : KeyboardEvent) : void {
-    const $input: HTMLInputElement|null = $event.target as HTMLInputElement;
 
+  //void = aucun return
+  public addItem($event : KeyboardEvent) : void {
+    //const $input: HTMLInputElement|null = $event.target as HTMLInputElement;
     if($event.code === 'Enter'){
-      console.log($event);
+      const $input: EventTarget|null = $event.target;
+
+      if($input instanceof HTMLInputElement){
+        const valueNoSpace = $input.value.trim();
+        if(valueNoSpace != ''){
+          this.todoArray.push({
+            title : valueNoSpace,
+            checked : false
+          });
+          $input.value = '';
+        }
+      }
+    }    
+  }
+
+  public removeItem(index : number) : void {
+    if(index > -1 && index < this.todoArray.length){
+      this.todoArray.splice(index, 1); // .splice() supprimer element d'un tableau
     }
-    
   }
 }

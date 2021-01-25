@@ -13,11 +13,11 @@
           </div>
   
           <ul class="list-group list-group-flush">
-              <!--*ngFor="let item of todoArray" => boucle for-->
+              <!--*ngFor="let item of todoArray" == boucle for-->
             <li *ngFor="let item of todoArray; let itemIndex = index" class="list-group-item d-flex justify-content-between">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" [attr.id]="'todo-check' + itemIndex" [(ngModel)] = "item.checked">
-                <label class="form-check-label" [attr.for]="'todo-check' + itemIndex">
+                <label class="form-check-label" [class.done]="item.checked" [attr.for]="'todo-check' + itemIndex">
                   {{ item.title }}
                 </label>
               </div>
@@ -32,8 +32,9 @@
             <div>
               {{ todoArray.length }} items
             </div>
-  
-            <button *ngIf=" atLeastOneChecked" class="btn btn-sm btn-link" (click)="clearCompleted()">
+            
+            <!--*ngIf == if-->
+            <button *ngIf="atLeastOneChecked" class="btn btn-sm btn-link" (click)="clearCompleted()">
               Clear completed
             </button>
           </div>

@@ -8,16 +8,6 @@ import { todoItem } from './todo-item';
 })
 export class AppComponent {
   title = 'todo-list';
-
-
-  public get atLeastOneChecked() : boolean {
-    for(let item of this.todoArray){
-      if(item.checked === true){
-        return true;
-      }
-    }
-    return false;
-  }
   
   public todoArray : Array<todoItem> = [];
 
@@ -45,6 +35,15 @@ export class AppComponent {
     if(index > -1 && index < this.todoArray.length){
       this.todoArray.splice(index, 1); // .splice() supprimer element d'un tableau
     }
+  }
+
+  public get atLeastOneChecked() : boolean {
+    for(let item of this.todoArray){
+      if(item.checked === true){
+        return true;
+      }
+    }
+    return false;
   }
 
   public clearCompleted() : void {

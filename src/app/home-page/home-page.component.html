@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header">
+      <div class="form-group">
+        <input type="text" class="form-control" (keyup)="addItem($event)">
+      </div>
+    </div>
+
+    <ul class="list-group list-group-flush">
+        <!--*ngFor="let item of todoArray" == boucle for-->
+      <li *ngFor="let item of todoArray; let itemIndex = index" class="list-group-item d-flex justify-content-between">
+
+        <app-checkbox [label] = "item.title" [(checked)] = "item.checked"></app-checkbox>
+
+        <button class="btn btn-outline-danger btn-sm" (click)="removeItem(itemIndex)">
+          x
+        </button>
+      </li>
+    </ul>
+
+    <div class="card-footer d-flex justify-content-between">
+      
+      <app-array-size [tab] = "todoArray"></app-array-size>
+      
+      <!--*ngIf == if-->
+      <button *ngIf="atLeastOneChecked" class="btn btn-sm btn-link" (click)="clearCompleted()">
+        Clear completed
+      </button>
+    </div>
+  </div>

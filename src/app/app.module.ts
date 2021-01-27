@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { AppArraySizeComponent } from './app-array-size/app-array-size.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckboxComponent,
-    AppArraySizeComponent
+    AppArraySizeComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

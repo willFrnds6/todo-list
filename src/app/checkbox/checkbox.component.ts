@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-@Component({
+@Component({// Un décorateur permet de ajouter des infos dans une balise et est précédé d'un @
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss']
@@ -8,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class CheckboxComponent implements OnInit {
   // Create a static element. This element will be execute only one time
   private static counter = 0; 
-  public id : string;
+  public id: string;
+
+  @Input()// Permet d'ajouter un attribut label dans notre <app-checkbox></app-checkbox>
+  public label: string;
 
   constructor() {
     /* 1er methode

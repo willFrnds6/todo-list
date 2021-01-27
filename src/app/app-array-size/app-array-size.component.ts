@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AppArraySizeComponent implements OnInit {
 
   @Input()
-  public tab: Array <number>|null = null;
+  public tab: Array <string>|null = null;
 
   constructor() { }
 

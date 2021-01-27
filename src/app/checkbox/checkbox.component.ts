@@ -10,8 +10,11 @@ export class CheckboxComponent implements OnInit {
   private static counter = 0; 
   public id: string;
 
+  @Input()
+  public checked: boolean = false;
+
   @Input()// Permet d'ajouter un attribut label dans notre <app-checkbox></app-checkbox>
-  public label: string;
+  public label: string|null = null;
 
   constructor() {
     /* 1er methode

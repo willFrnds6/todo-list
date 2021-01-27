@@ -22,7 +22,7 @@
                 </label>
               </div>
 
-              <app-checkbox [label] = "item.title" [checked] = "item.checked"></app-checkbox>
+              <app-checkbox [label] = "item.title" [(checked)] = "item.checked"></app-checkbox>
   
               <button class="btn btn-outline-danger btn-sm" (click)="removeItem(itemIndex)">
                 x
